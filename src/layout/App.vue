@@ -1,9 +1,7 @@
 <template>
-  <div id="app">
-    <router-view/>
-  </div>
+  <router-view/>
 </template>
 
-<style lang="less">
+<style lang="less" scoped>
 
 </style>
