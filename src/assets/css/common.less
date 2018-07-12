@@ -18,6 +18,10 @@ body {
   line-height: 1.5;
 }
 
+input, textarea {
+  color: @text;
+}
+
 .tl {
   text-align: left;
 }
@@ -40,4 +44,26 @@ body {
 
 .text-gray {
   color: @gray;
+}
+
+input, textarea {
+  outline: 0;
+}
+
+// form
+.form-ctrl {
+  .flexbox();
+  width: 200px;
+  border: 1px solid @border;
+  border-radius: @s-r;
+  padding: 0 @m-l;
+  &.ico-r {
+    padding-right: @xs-l; 
+  }
+  input, textarea {
+    width: 100%;
+    font-size: @s-f;
+    border: none;
+  }
+  
 }
