@@ -1,17 +1,17 @@
 <template>
-  <div class="header">
+  <header class="header">
     <!-- nav -->
     <div class="nav">
       <span class="text-black">High</span>
-      <a href="javascript:;">coding</a>
-      <a href="javascript:;">writting</a>
-      <a href="javascript:;">thinking</a>
+      <a href="javascript:;">CODE</a>
+      <a href="javascript:;">THINK</a>
+      <a href="javascript:;">ESSAY</a>
     </div>
 
     <!-- search -->
     <Search></Search>
     
-  </div>
+  </header>
 </template>
 
 <script lang="ts">
@@ -43,6 +43,7 @@ export default class Header extends Vue {
   .nav {
     > span {
       font-size: @l-f;
+      margin-right: @m-l;
     }
     a {
       color: @text;

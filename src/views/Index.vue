@@ -1,8 +1,15 @@
 <template>
   <div class="index">
-    <Header>
+    <!-- header -->
+    <Header></Header>
 
-    </Header>
+    <!-- essay list -->
+    <div class="main">
+      main
+    </div>
+
+    <!-- footer -->
+    <Footer></Footer>
   </div>
 </template>
 
@@ -10,10 +17,12 @@
 
 import { Component, Vue } from 'vue-property-decorator'
 import Header from '@/components/Header.vue'
+import Footer from '@/components/Footer.vue'
 
 @Component({
   components: {
-    Header
+    Header,
+    Footer
   }
 })
 export default class Index extends Vue {
@@ -23,5 +32,13 @@ export default class Index extends Vue {
 </script>
 
 <style lang="less" scoped>
+@import '../assets/css/variable.less';
+@import '../assets/css/mixin.less';
+
+.index {
+  flex-grow: 1;
+  .flexbox();
+  flex-direction: column;
+}
 
 </style>
