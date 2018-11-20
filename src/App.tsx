@@ -1,9 +1,18 @@
-import React, { Component } from 'react';
+import * as React from 'react';
+import { Provider } from 'react-redux';
+// import configureStore from './store/configureStore';
+import Routes from './routes';
+
 import './App.less';
 
-class App extends Component {
+class App extends React.Component {
   public render() {
-    return <div className="App">blog start</div>;
+    return (
+      // <Provider store={configureStore()}>
+      <div>
+        <Routes />
+      </div>
+    );
   }
 }
 
