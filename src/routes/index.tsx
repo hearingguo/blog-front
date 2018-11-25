@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Dispatch, bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+// import { Dispatch, bindActionCreators } from 'redux';
+// import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { history } from '../store/configureStore';
-import * as actionCreators from '../actions/locale';
 
+/** 国际化 */
 import { IntlProvider } from 'react-intl';
 import enUs from '../locales/en_US';
 import jaJP from '../locales/ja_JP';
@@ -28,14 +28,7 @@ const locales: {
   zh: zhCN
 };
 
-export interface StateProps {
-  locale: LocaleEntity;
-}
-export interface DispatchProps {
-  fetchLocale: (locale: string) => void;
-}
-
-class Routes extends React.Component<StateProps, DispatchProps> {
+class Routes extends React.Component {
   public render() {
     return (
       <IntlProvider locale={navigator.language} messages={locales[navigator.language]}>
@@ -43,7 +36,7 @@ class Routes extends React.Component<StateProps, DispatchProps> {
           <Switch>
             <Route path="/" component={Home} />
             <Route path="/user" component={User} />
-            <Route component={E404} />
+            <Route path="/404" component={E404} />
           </Switch>
         </ConnectedRouter>
       </IntlProvider>
@@ -51,7 +44,4 @@ class Routes extends React.Component<StateProps, DispatchProps> {
   }
 }
 
-export default connect<StateProps, DispatchProps>(
-  (state: RootState) => ({ locale: state.locale }),
-  (dispatch: Dispatch) => bindActionCreators(actionCreators, dispatch)
-)(Routes);
+export default Routes;

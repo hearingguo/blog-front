@@ -3,9 +3,11 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createBrowserHistory } from 'history';
 import { routerMiddleware, connectRouter } from 'connected-react-router';
 import { createEpicMiddleware } from 'redux-observable';
-import rootReducer from '../reducers';
+import reducer from '../reducers';
 
 export const history = createBrowserHistory();
+
+export default createStore(reducer);
 
 // const configureStore = (initialState?: RootState) => {
 //   const epicMiddleware = createEpicMiddleware();
@@ -13,8 +15,7 @@ export const history = createBrowserHistory();
 //   if (process.env.NODE_ENV === 'development') {
 //     middlewares = composeWithDevTools(middlewares);
 //   }
-//   const store = createStore(connectRouter(history)(rootReducer), initialState, middlewares);
-//   epicMiddleware.run(rootEpic);
+//   const store = createStore(connectRouter(history)(reducer), initialState, middlewares);
 //   return store;
 // };
 

@@ -8,9 +8,4 @@ const initialState: LocaleEntity = {
   app: appLocale
 };
 
-export default handleActions(
-  {
-    [FETCH_LOCALE_SUCCESS]: (state: LocaleEntity, action: RootAction<LocaleEntity>) => ({ ...action.payload })
-  },
-  initialState
-);
+export default handleActions({}, initialState);
