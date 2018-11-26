@@ -5,4 +5,5 @@ declare interface RootAction<T = {}> {
 
 declare interface RootState {
   locale: LocaleEntity;
+  user: UserEntity;
 }

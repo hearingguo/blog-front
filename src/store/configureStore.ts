@@ -3,11 +3,11 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import { createBrowserHistory } from 'history';
 import { routerMiddleware, connectRouter } from 'connected-react-router';
 import { createEpicMiddleware } from 'redux-observable';
-import reducer from '../reducers';
+import rootReducer from '../reducers';
 
 export const history = createBrowserHistory();
 
-export default createStore(reducer);
+export default createStore(rootReducer);
 
 // const configureStore = (initialState?: RootState) => {
 //   const epicMiddleware = createEpicMiddleware();
