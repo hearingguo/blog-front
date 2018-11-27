@@ -1,5 +1,4 @@
 {
-  "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.test.tsx"],
   "compilerOptions": {
     "esModuleInterop": true,
@@ -9,7 +8,6 @@
     "typeRoots": ["node_modules/@types"],
     "strictPropertyInitialization": false,
     "emitDecoratorMetadata": true,
-    "strict": true,
     "jsx": "preserve",
     "jsxFactory": "h",
     "allowSyntheticDefaultImports": true,
@@ -26,6 +24,13 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true
-  }
+    "noEmit": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "noUnusedLocals": false,
+    "downlevelIteration": true,
+    "strict": false
+  },
+  "include": ["src"]
 }
