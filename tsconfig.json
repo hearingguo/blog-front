@@ -30,7 +30,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": false,
     "downlevelIteration": true,
-    "strict": false
+    "strict": true
   },
   "include": ["src"]
 }

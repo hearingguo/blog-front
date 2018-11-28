@@ -1,5 +1,4 @@
 export default {
   locale: 'zh_CN',
-  pluralRuleFunction: () => '',
-  'app.name': '博客 | highya'
+  'intl.name': '会员中心'
 };

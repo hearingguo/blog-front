@@ -1,5 +1,4 @@
 export default {
   locale: 'ja_JP',
-  pluralRuleFunction: () => '',
-  'app.name': 'BLOG | HIGHYA'
+  'intl.name': 'MemberCenter'
 };

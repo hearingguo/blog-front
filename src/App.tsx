@@ -8,7 +8,7 @@ import './App.less';
 class App extends React.Component {
   public render() {
     return (
-      <Provider store={configureStore}>
+      <Provider store={configureStore()}>
         <Routes />
       </Provider>
     );

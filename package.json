@@ -10,7 +10,7 @@
     "precommit": "lint-staged"
   },
   "dependencies": {
-    "connected-react-router": "^5.0.1",
+    "connected-react-router": "^4.5.0",
     "history": "^4.7.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
@@ -19,7 +19,9 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
     "redux": "^4.0.1",
-    "redux-actions": "^2.6.4"
+    "redux-actions": "^2.6.4",
+    "redux-devtools-extension": "^2.13.7",
+    "redux-observable": "^1.0.0"
   },
   "devDependencies": {
     "@types/history": "^4.7.2",
@@ -30,6 +32,7 @@
     "@types/react-intl": "^2.3.13",
     "@types/react-redux": "^6.0.10",
     "@types/react-router-dom": "^4.3.1",
+    "@types/redux": "^3.6.0",
     "@types/redux-actions": "^2.3.1",
     "husky": "^1.1.4",
     "lint-staged": "^8.0.5",
