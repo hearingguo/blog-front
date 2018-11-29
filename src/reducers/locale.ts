@@ -1,7 +1,8 @@
-import { handleActions } from 'redux-actions';
+import { handleActions, Action } from 'redux-actions';
 
 import appLocale from '../locales/zh_CN';
 import { FETCH_LOCALE_SUCCESS } from '../actions/ActionTypes';
+import { AnyAction } from 'redux';
 
 const initialState: LocaleEntity = {
   language: 'zh-CN',

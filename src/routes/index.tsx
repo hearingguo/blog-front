@@ -6,7 +6,9 @@ import { ConnectedRouter } from 'connected-react-router';
 import { IntlProvider } from 'react-intl';
 import * as actionCreators from '../actions/user';
 import { history } from '../store/configureStore';
-import AllComponents from '../pages';
+
+import WrapLayout from '../layouts/WrapLayout';
+import E404 from '../pages/E404';
 
 export interface StateProps {
   locale: LocaleEntity;
@@ -29,10 +31,8 @@ class Routes extends React.Component<StateProps, DispatchProps> {
         <ConnectedRouter history={history}>
           <div>
             <Switch>
-              <Route exact path="/" component={AllComponents.Home} />
-              <Route path="/booking" component={AllComponents.Booking} />
-              <Route path="/booking/english" component={AllComponents.BookingEnglish} />
-              <Route path="/404" component={AllComponents.E404} />
+              <Route path="/member" component={WrapLayout} />
+              <Route path="/404" component={E404} />
             </Switch>
           </div>
         </ConnectedRouter>
