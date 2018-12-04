@@ -6,19 +6,19 @@ import AllPages from '../pages';
 
 export default [
   {
-    path: '/member',
+    path: '/blog',
     exact: true,
-    main: AllPages.Learning,
+    main: AllPages.Home,
     routes: [
       {
-        path: '/learning',
+        path: '/home',
         sidebar: '学习中心',
-        main: AllPages.Learning
+        main: AllPages.Home
       },
       {
-        path: '/booking',
+        path: '/list',
         sidebar: '预订课程',
-        main: AllPages.Booking
+        main: AllPages.List
       }
     ]
   }

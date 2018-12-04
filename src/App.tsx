@@ -10,9 +10,7 @@ class App extends React.Component {
   public render() {
     return (
       <Provider store={configureStore()}>
-        <div className="vjr-mc">
-          {/* FAQ 入口 */}
-          <Header />
+        <div className="blog-page">
           {/* Member Center */}
           <Routes />
         </div>

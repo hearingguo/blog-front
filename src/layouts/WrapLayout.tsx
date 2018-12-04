@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import Footer from './Footer';
-import SiderNav from './SideNav';
+import Header from './Header';
 
 import Content from './Content';
 
 class WrapLayout extends Component {
   public render() {
     return (
-      <div className="vjr-wrap">
-        <SiderNav />
-        <div className="vjr-main">
-          {/* main */}
-          <Content />
-          {/* footer */}
-          <Footer />
-        </div>
+      <div className="blog-wrap">
+        {/* header */}
+        <Header />
+
+        {/* main */}
+        <Content />
+
+        {/* footer */}
+        <Footer />
       </div>
     );
   }

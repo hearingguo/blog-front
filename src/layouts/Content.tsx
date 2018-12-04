@@ -7,9 +7,8 @@ class Content extends Component {
   public render() {
     return (
       <Switch>
-        <Route path="/member/learning" component={AllPages.Learning} />
-        <Route path="/booking" component={AllPages.Booking} />
-        <Route path="/booking/english" component={AllPages.BookingEnglish} />
+        <Route path="/blog/home" component={AllPages.Home} />
+        <Route path="/blog/list" component={AllPages.List} />
       </Switch>
     );
   }

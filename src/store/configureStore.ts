@@ -8,7 +8,7 @@ import rootReducer from '../reducers';
 
 export const history = createBrowserHistory();
 
-const configureStore = (initialState?: RootState) => {
+const configureStore = (initialState?: any) => {
   const epicMiddleware = createEpicMiddleware();
   let middlewares = applyMiddleware(epicMiddleware, routerMiddleware(history));
   if (process.env.NODE_ENV === 'development') {

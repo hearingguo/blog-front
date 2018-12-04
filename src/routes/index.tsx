@@ -31,7 +31,7 @@ class Routes extends React.Component<StateProps, DispatchProps> {
         <ConnectedRouter history={history}>
           <div>
             <Switch>
-              <Route path="/member" component={WrapLayout} />
+              <Route path="/blog" component={WrapLayout} />
               <Route path="/404" component={E404} />
             </Switch>
           </div>

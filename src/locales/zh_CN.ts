@@ -1,4 +1,4 @@
 export default {
   locale: 'zh_CN',
-  'intl.name': '会员中心'
+  'intl.name': '博客'
 };

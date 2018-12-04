@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Null extends Component {
   public render() {
-    return <div className="vjr-main">Null</div>;
+    return <div className="blog-main">Null</div>;
   }
 }
 
