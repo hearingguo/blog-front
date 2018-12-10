@@ -29,12 +29,10 @@ class Routes extends React.Component<StateProps, DispatchProps> {
     return (
       <IntlProvider locale={locale.language} messages={locale.app}>
         <ConnectedRouter history={history}>
-          <div>
-            <Switch>
-              <Route path="/blog" component={WrapLayout} />
-              <Route path="/404" component={E404} />
-            </Switch>
-          </div>
+          <Switch>
+            <Route path="/blog" component={WrapLayout} />
+            <Route path="/404" component={E404} />
+          </Switch>
         </ConnectedRouter>
       </IntlProvider>
     );

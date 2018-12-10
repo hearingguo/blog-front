@@ -1,6 +1,7 @@
 const Color = {
   border: '#eee',
-  theme: '#333',
+  theme: '#555',
+  themeDark: '#000',
   themeGray: '#ccc'
 };
 
@@ -11,6 +12,7 @@ const Size = {
 };
 
 const Gap = {
+  xs: '5px',
   s: '10px',
   m: '15px',
   l: '20px'
