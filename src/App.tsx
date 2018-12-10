@@ -5,6 +5,7 @@ import Routes from './routes';
 import Header from './layouts/Header';
 
 import './App.less';
+import './scss/index.less';
 
 class App extends React.Component {
   public render() {

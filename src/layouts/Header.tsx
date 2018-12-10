@@ -13,8 +13,11 @@ class Header extends Component {
   public render() {
     return (
       <StyleHeader className="blog-header">
-        <img src="../images/logo.png" alt="" />
-        策码奔腾 | 目的旅行 | 不务正业
+        <div className="blog-navs">
+          <a className="blog-header-logo" />
+          策码奔腾 | 目的旅行 | 不务正业
+        </div>
+        <div className="blog-search">search</div>
       </StyleHeader>
     );
   }
