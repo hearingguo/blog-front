@@ -1,12 +1,10 @@
 // 首页
-import Learning from './learning';
+import Home from './Home';
 
-// 预订课程
-import Booking from './booking';
-import BookingEnglish from './booking/English';
+// blog
+import List from './List';
 
 export default {
-  Learning,
-  Booking,
-  BookingEnglish
+  Home,
+  List
 };
