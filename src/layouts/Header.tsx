@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import styles from '../config/style';
-import logo from '../images/logo.png';
-
 import route from '../config/routes';
+import Search from '../components/common/Search';
+import logo from '../images/logo.png';
 
 const StyleHeader = styled.div`
   border-bottom: 1px solid ${styles.Color.border};
@@ -42,8 +42,6 @@ const StyleNav = styled.a`
   }
 `;
 
-const StyleSearch = styled.div``;
-
 class Header extends Component {
   public render() {
     return (
@@ -60,7 +58,7 @@ class Header extends Component {
           </StyleNavs>
         </div>
         {/* blog-search */}
-        <StyleSearch>search</StyleSearch>
+        <Search />
       </StyleHeader>
     );
   }
