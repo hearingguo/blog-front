@@ -48,7 +48,7 @@ class Footer extends Component {
         <StyleFooterItem>
           {['文天祥', '李白', '杜牧'].map((item: string, index: number) => {
             return (
-              <StyleLink>
+              <StyleLink key={index}>
                 <span dangerouslySetInnerHTML={{ __html: index !== 0 ? '&nbsp;&nbsp;&bull;&nbsp;&nbsp;' : '' }} />
                 <a href="">{item}</a>
               </StyleLink>
@@ -59,7 +59,7 @@ class Footer extends Component {
           <StyleBorder />
           {['文天祥', '李白'].map((item: string, index: number) => {
             return (
-              <StyleLink>
+              <StyleLink key={index}>
                 <span dangerouslySetInnerHTML={{ __html: index !== 0 ? '&nbsp;&nbsp;&bull;&nbsp;&nbsp;' : '' }} />
                 <a href="">{item}</a>
               </StyleLink>

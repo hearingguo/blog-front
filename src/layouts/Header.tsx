@@ -53,7 +53,7 @@ class Header extends Component {
           <StyleLogo />
           <StyleNavs>
             {route.NAVS.map((item: INavItem, index: number) => {
-              return <StyleNav>{item.name}</StyleNav>;
+              return <StyleNav key={index}>{item.name}</StyleNav>;
             })}
           </StyleNavs>
         </div>
