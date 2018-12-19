@@ -8,7 +8,7 @@ class ListItem extends Component {
   public render() {
     return (
       <ul>
-        <StyleListItem />
+        <StyleListItem>//</StyleListItem>
       </ul>
     );
   }

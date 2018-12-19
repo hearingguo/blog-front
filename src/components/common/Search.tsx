@@ -12,6 +12,13 @@ const StyleLabel = styled.label`
     margin-right: ${styles.Gap.s};
     border: 0;
     font-size: 1rem;
+    outline: none;
+  }
+
+  .iconfont {
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
   }
 `;
 
@@ -29,17 +36,27 @@ class Search extends Component<IProps, IState> {
     this.state = {
       isSearch: false
     };
+    this.handleSearch = this.handleSearch.bind(this);
+  }
+
+  private handleSearch() {
+    this.setState({
+      isSearch: !this.state.isSearch
+    });
+    if (!this.state.isSearch) {
+      // search
+    }
   }
 
   public render() {
     return (
       <StyleLabel>
         <input
-          className={`animated ${this.state.isSearch ? 'fadeInRight' : ''}`}
+          className={`animated ${this.state.isSearch ? 'fadeInRight' : 'fadeOutRight'}`}
           type="search"
           placeholder="search..."
         />
-        <span className="iconfont icon-search" />
+        <span className="iconfont icon-search" onClick={this.handleSearch} />
       </StyleLabel>
     );
   }

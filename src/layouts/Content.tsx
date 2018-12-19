@@ -12,8 +12,10 @@ class Content extends Component {
       // blog-main
       <div className="blog-main">
         <Switch>
-          <Route path="/blog/home" component={AllPages.Home} />
-          <Route path="/blog/list" component={AllPages.List} />
+          <Route path="/blog" component={AllPages.Home} />
+          <Route path="/blog/coding" component={AllPages.Coding} />
+          <Route path="/blog/traveling" component={AllPages.Traveling} />
+          <Route path="/blog/trying" component={AllPages.Trying} />
         </Switch>
       </div>
     );
