@@ -10,14 +10,14 @@ class Content extends Component {
   public render() {
     return (
       // blog-main
-      <div className="blog-main">
+      <StyleMain className="blog-main">
         <Switch>
-          <Route path="/blog" component={AllPages.Home} />
-          <Route path="/blog/coding" component={AllPages.Coding} />
-          <Route path="/blog/traveling" component={AllPages.Traveling} />
-          <Route path="/blog/trying" component={AllPages.Trying} />
+          <Route path="/blog" component={AllPages.Home} exact={true} />
+          <Route path="/blog/coding" component={AllPages.Coding} exact={true} />
+          <Route path="/blog/traveling" component={AllPages.Traveling} exact={true} />
+          <Route path="/blog/trying" component={AllPages.Trying} exact={true} />
         </Switch>
-      </div>
+      </StyleMain>
     );
   }
 }
