@@ -4,13 +4,20 @@ import AllPages from '../pages';
 import styled from 'styled-components';
 import styles from '../config/style';
 
-const StyleMain = styled.div``;
+const StyleMain = styled.div`
+  position: relative;
+  margin: 0 auto;
+  padding: ${styles.Gap.l};
+  width: 100%;
+  min-height: calc(100% - 166px);
+  max-width: 1000px;
+`;
 
 class Content extends Component {
   public render() {
     return (
       // blog-main
-      <StyleMain className="blog-main">
+      <StyleMain>
         <Switch>
           <Route path="/blog" component={AllPages.Home} exact={true} />
           <Route path="/blog/coding" component={AllPages.Coding} exact={true} />

@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import ListItem from '../components/common/ListItem';
 
-class Lists extends Component {
+class Lists extends Component<any> {
   constructor(props: any) {
     super(props);
   }
 
   public render() {
     return (
-      <div className="blog-lists">
+      <ul style={{ paddingLeft: '130px' }}>
         {this.props.lists.map((item: number, index: number) => {
-          return <ListItem key={index} />;
+          return <ListItem key={index} article={item} />;
         })}
-      </div>
+      </ul>
     );
   }
 }
