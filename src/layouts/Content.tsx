@@ -9,7 +9,7 @@ const StyleMain = styled.div`
   margin: 0 auto;
   padding: ${styles.Gap.l};
   width: 100%;
-  min-height: calc(100% - 166px);
+  min-height: calc(100% - 206px);
   max-width: 1000px;
 `;
 
@@ -19,7 +19,6 @@ class Content extends Component {
       // blog-main
       <StyleMain>
         <Switch>
-          <Route path="/blog" component={AllPages.Home} exact={true} />
           <Route path="/blog/coding" component={AllPages.Coding} exact={true} />
           <Route path="/blog/traveling" component={AllPages.Traveling} exact={true} />
           <Route path="/blog/trying" component={AllPages.Trying} exact={true} />

@@ -11,7 +11,7 @@ export default [
     main: AllPages.Home,
     routes: [
       {
-        path: '/home',
+        path: '/',
         sidebar: '博客主页',
         main: AllPages.Home
       },
