@@ -22,11 +22,7 @@ const lists = [
 
 class Coding extends Component {
   public render() {
-    return (
-      <div className="blog-main">
-        <List lists={lists} />
-      </div>
-    );
+    return <List lists={lists} />;
   }
 }
 

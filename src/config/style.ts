@@ -2,20 +2,24 @@ const Color = {
   border: '#eee',
   theme: '#555',
   themeDark: '#000',
-  themeGray: '#ccc'
+  themeGray: '#ccc',
+  themeGrayDark: '#aaa'
 };
 
 const Size = {
-  s: '12px',
-  m: '14px',
-  l: '18px'
+  xs: '0.9rem',
+  s: '1rem',
+  m: '1.3rem',
+  l: '1.8rem',
+  xl: '2rem'
 };
 
 const Gap = {
   xs: '5px',
   s: '10px',
   m: '15px',
-  l: '20px'
+  l: '20px',
+  xl: '30px'
 };
 
 const Shadow = {
