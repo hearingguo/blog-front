@@ -2,9 +2,13 @@
 import Home from './Home';
 
 // blog
-import List from './List';
+import Coding from './Coding';
+import Traveling from './Traveling';
+import Trying from './Trying';
 
 export default {
   Home,
-  List
+  Coding,
+  Traveling,
+  Trying
 };

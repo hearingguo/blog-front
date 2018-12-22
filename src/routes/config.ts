@@ -12,13 +12,23 @@ export default [
     routes: [
       {
         path: '/home',
-        sidebar: '学习中心',
+        sidebar: '博客主页',
         main: AllPages.Home
       },
       {
-        path: '/list',
-        sidebar: '预订课程',
-        main: AllPages.List
+        path: '/coding',
+        sidebar: '策码奔腾',
+        main: AllPages.Coding
+      },
+      {
+        path: '/traveling',
+        sidebar: '目的旅行',
+        main: AllPages.Traveling
+      },
+      {
+        path: '/trying',
+        sidebar: '不务正业',
+        main: AllPages.Trying
       }
     ]
   }
