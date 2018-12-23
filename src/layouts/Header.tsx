@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
+import { FormattedMessage } from 'react-intl';
 import styles from '../config/style';
-import route from '../config/routes';
+import route from '../routes/config';
 import Search from '../components/common/Search';
 import logo from '../images/logo.png';
 
@@ -52,8 +53,12 @@ class Header extends Component {
           {/* blog-header-logo */}
           <StyleLogo />
           <StyleNavs>
-            {route.NAVS.map((item: INavItem, index: number) => {
-              return <StyleNav key={index}>{item.name}</StyleNav>;
+            {route[0].routes.map((item: INavItem, index: number) => {
+              return (
+                <StyleNav key={index}>
+                  <FormattedMessage id={item.sidebar} />
+                </StyleNav>
+              );
             })}
           </StyleNavs>
         </div>
