@@ -1,3 +1,5 @@
 declare interface INavItem {
-  name: string;
+  path: string;
+  sidebar: string;
+  main: any;
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import route from '../routes/config';
 import AllPages from '../pages';
 import styled from 'styled-components';
 import styles from '../config/style';
@@ -9,7 +10,7 @@ const StyleMain = styled.div`
   margin: 0 auto;
   padding: ${styles.Gap.l};
   width: 100%;
-  min-height: calc(100% - 166px);
+  min-height: calc(100% - 206px);
   max-width: 1000px;
 `;
 
@@ -19,10 +20,9 @@ class Content extends Component {
       // blog-main
       <StyleMain>
         <Switch>
-          <Route path="/blog" component={AllPages.Home} exact={true} />
-          <Route path="/blog/coding" component={AllPages.Coding} exact={true} />
-          <Route path="/blog/traveling" component={AllPages.Traveling} exact={true} />
-          <Route path="/blog/trying" component={AllPages.Trying} exact={true} />
+          {route[0].routes.map((item: INavItem, index: number) => {
+            return <Route path={`/blog${item.path}`} component={item.main} exact={true} />;
+          })}
         </Switch>
       </StyleMain>
     );

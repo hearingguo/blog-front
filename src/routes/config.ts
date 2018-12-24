@@ -11,23 +11,18 @@ export default [
     main: AllPages.Home,
     routes: [
       {
-        path: '/home',
-        sidebar: '博客主页',
-        main: AllPages.Home
-      },
-      {
         path: '/coding',
-        sidebar: '策码奔腾',
+        sidebar: 'nav.coding',
         main: AllPages.Coding
       },
       {
         path: '/traveling',
-        sidebar: '目的旅行',
+        sidebar: 'nav.traveling',
         main: AllPages.Traveling
       },
       {
         path: '/trying',
-        sidebar: '不务正业',
+        sidebar: 'nav.trying',
         main: AllPages.Trying
       }
     ]

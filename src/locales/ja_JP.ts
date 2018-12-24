@@ -1,4 +1,4 @@
 export default {
-  locale: 'ja_JP',
-  'intl.name': 'BLOG'
+  locale: 'ja-JP',
+  'app.name': 'BLOG'
 };

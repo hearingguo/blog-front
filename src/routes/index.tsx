@@ -8,6 +8,7 @@ import * as actionCreators from '../actions/user';
 import { history } from '../store/configureStore';
 
 import WrapLayout from '../layouts/WrapLayout';
+import Home from '../pages/Home';
 import E404 from '../pages/E404';
 
 export interface StateProps {
@@ -30,8 +31,9 @@ class Routes extends React.Component<StateProps, DispatchProps> {
       <IntlProvider locale={locale.language} messages={locale.app}>
         <ConnectedRouter history={history}>
           <Switch>
-            <Route path="/blog" component={WrapLayout} />
-            <Route path="/404" component={E404} />
+            <Route path="/blog" component={Home} exact={true} />
+            <Route path="/blog/:name" component={WrapLayout} exact={true} />
+            <Route path="/404" component={E404} exact={true} />
           </Switch>
         </ConnectedRouter>
       </IntlProvider>

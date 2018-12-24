@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import styles from '../config/style';
 
 const StyleFooter = styled.div`
-  padding: ${styles.Gap.m};
+  padding: ${styles.Gap.s};
   text-align: center;
   border-top: 1px solid ${styles.Color.border};
   box-shadow: ${styles.Shadow.blackBottom};
@@ -20,7 +20,7 @@ const StyleBorder = styled.span`
 
 const StyleFooterItem = styled.div`
   position: relative;
-  padding: ${styles.Gap.xs};
+  padding: ${styles.Gap.s};
 `;
 
 const StyleFooterItemInline = styled(StyleFooterItem)`
@@ -57,7 +57,7 @@ class Footer extends Component {
         </StyleFooterItem>
         <StyleFooterItemInline>
           <StyleBorder />
-          {['文天祥', '李白'].map((item: string, index: number) => {
+          {['我', '归档'].map((item: string, index: number) => {
             return (
               <StyleLink key={index}>
                 <span dangerouslySetInnerHTML={{ __html: index !== 0 ? '&nbsp;&nbsp;&bull;&nbsp;&nbsp;' : '' }} />
