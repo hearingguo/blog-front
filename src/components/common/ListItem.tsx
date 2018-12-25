@@ -1,28 +1,33 @@
 import React, { Component } from 'react';
+import { FormattedDate } from 'react-intl';
 import styled from 'styled-components';
 import styles from '../../config/style';
 
 const StyleListItem = styled.li`
   padding: ${styles.Gap.l} 0;
+  margin: ${styles.Gap.xl} 0;
   position: relative;
-  article::before, article::after {
+  article::before,
+  article::after {
     content: '';
     position: absolute;
     top: 0;
     display: block;
-    background: ${styles.Color.themeGray};
   }
   article::before {
     left: -25px;
     width: 1px;
     height: 100%;
+    background: ${styles.Color.themeGray};
   }
   article::after {
-    top: 25px;
-    left: -32px;
-    width: ${styles.Gap.m}
-    height: ${styles.Gap.m}
+    top: 22px;
+    left: -31.5px;
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
+    background: ${styles.Color.white};
+    border: 1px solid ${styles.Color.themeGray};
   }
   .title {
     font-weight: bold;
@@ -40,7 +45,7 @@ const StyleListItem = styled.li`
     font-style: normal;
     position: absolute;
     left: -120px;
-    top: 25px;
+    top: 22px;
     color: ${styles.Color.themeGray};
   }
 `;
@@ -67,7 +72,9 @@ class ListItem extends Component<IProps> {
             <span className="others-likes">{likes}</span>
           </div>
         </article>
-        <i>{time.split(' ')[0].replace(/-/g, '.')}</i>
+        <i>
+          <FormattedDate value={new Date(time)} year="numeric" month="short" day="2-digit" />
+        </i>
       </StyleListItem>
     );
   }

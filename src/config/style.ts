@@ -1,4 +1,5 @@
 const Color = {
+  white: '#fff',
   border: '#eee',
   theme: '#555',
   themeDark: '#000',
