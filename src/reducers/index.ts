@@ -1,17 +1,9 @@
 import { combineReducers } from 'redux';
 import locale from './locale';
-import user from './user';
+import articles from './articles';
 import { Reducer } from 'redux-actions';
 
-type RootStates = LocaleEntity | UserEntity;
-
-interface Reducers {
-  [key: string]: Reducer<RootStates | undefined, RootStates>;
-}
-
-const reducerMap = {
+export default combineReducers({
   locale,
-  user
-} as Reducers;
-
-export default combineReducers(reducerMap);
+  articles
+} as any);

@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
 import { IntlProvider } from 'react-intl';
-import * as actionCreators from '../actions/user';
 import { history } from '../store/configureStore';
 
 import WrapLayout from '../layouts/WrapLayout';
@@ -13,20 +12,15 @@ import E404 from '../pages/E404';
 
 export interface StateProps {
   locale: LocaleEntity;
-  user: UserEntity;
 }
 export interface DispatchProps {
   fetchUserInfo: (ticket?: string) => void;
 }
 
 class Routes extends React.Component<StateProps, DispatchProps> {
-  public componentDidMount() {
-    // 获取当前用户信息
-  }
-
   public render() {
     console.log(this.props);
-    const { locale, user } = this.props;
+    const { locale } = this.props;
     return (
       <IntlProvider locale={locale.language} messages={locale.app}>
         <ConnectedRouter history={history}>
@@ -41,7 +35,4 @@ class Routes extends React.Component<StateProps, DispatchProps> {
   }
 }
 
-export default connect<StateProps, DispatchProps, {}, RootState>(
-  (state: RootState) => ({ locale: state.locale, user: state.user }),
-  (dispatch: Dispatch) => bindActionCreators(actionCreators, dispatch)
-)(Routes);
+export default connect<StateProps, undefined, {}, RootState>((state: RootState) => ({ locale: state.locale }))(Routes);

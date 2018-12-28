@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedDate } from 'react-intl';
 import styled from 'styled-components';
-import styles from '../../config/style';
+import styles from '../config/style';
 
 const StyleListItem = styled.li`
   padding: ${styles.Gap.l} 0;
@@ -73,7 +73,7 @@ class ListItem extends Component<IProps> {
           </div>
         </article>
         <i>
-          <FormattedDate value={new Date(time)} year="numeric" month="short" day="2-digit" />
+          <FormattedDate value={new Date(time)} />
         </i>
       </StyleListItem>
     );
