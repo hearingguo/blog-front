@@ -1,7 +1,28 @@
 import { AxiosResponse, AxiosRequestConfig } from 'axios';
+import { API_ROOT } from '../api/url';
 
 // axios config
 export const config: AxiosRequestConfig = {
+  baseURL: API_ROOT,
+
+  // 请求前处理数据
+  transformRequest: [
+    (data, headers) => {
+      // 自定义请求拦截逻辑，可以处理权限，请求发送监控等
+
+      // ...
+      return data;
+    }
+  ],
+
+  // 请求后的数据处理
+  transformResponse: [
+    (response: Ajax.Response) => {
+      // 处理返回数据格式
+      return response;
+    }
+  ],
+
   maxContentLength: 20000,
 
   // 超时设置s
@@ -23,35 +44,22 @@ export const config: AxiosRequestConfig = {
 
 // request
 export function request(config: AxiosRequestConfig) {
-  // if (
-  //   config.method === 'post' ||
-  //   config.method === 'put' ||
-  //   config.method === 'delete' ||
-  //   config.method === 'patch'
-  // ) {
-  //   config.data = querystring.stringify(config.data)
-  // }
   return config;
 }
 
 // request Fail
 export function requestFail(error: Error) {
   // 自定义发送请求失败逻辑，断网，请求发送监控等
-
   return Promise.reject(error);
 }
 
 // response
-export function response(response: AxiosResponse<AjaxResponse>) {
-  const { status, msg } = response.data;
-  if (status === 0) {
-    alert(msg);
-  }
+export function response(response: AxiosResponse<Ajax.Response>) {
   return response;
 }
 
 // response error
 export function responseError(error: any) {
-  alert('error');
+  // 登录校验
   return Promise.reject(error);
 }

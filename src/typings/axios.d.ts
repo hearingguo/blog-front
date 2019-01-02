@@ -1,19 +1,28 @@
-declare interface AjaxResponse<T = any> {
-  /**
-   * 状态码
-   * @type { string }
-   */
-  status: number;
+declare namespace Ajax {
+  // 请求接口数据
+  export interface Response<T = any> {
+    /**
+     * success
+     * @type { boolean }
+     */
+    success: boolean;
 
-  /**
-   * 消息
-   * @type {string}
-   */
-  msg: string;
+    /**
+     * 状态码
+     * @type { number }
+     */
+    code: number;
 
-  /**
-   * DATA
-   * @type {*}
-   */
-  data?: T;
+    /**
+     * 消息
+     * @type { string }
+     */
+    message: string;
+
+    /**
+     * DATA
+     * @type {*}
+     */
+    data?: T;
+  }
 }

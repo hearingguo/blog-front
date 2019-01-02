@@ -1,9 +1,9 @@
 import qs from 'qs';
 import { API_HOST } from '../api';
-import { ax } from '../api/axios';
+import * as ax from '../service/axios';
 
 // get blog wesite infomation
-export async function getArticles<T = undefined>(params: any): Promise<AjaxResponse<T>> {
-  const res = await ax.get<AjaxResponse<T>>(`${API_HOST}/article?${qs.stringify(params)}`);
-  return res.data;
-}
+// export async function getArticles<T = undefined>(params: any): Promise<Ajax.Response<T>> {
+//   const res = await ax.get<Ajax.Response<T>>(`${API_HOST}/article?${qs.stringify(params)}`);
+//   return res.data;
+// }
