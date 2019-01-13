@@ -2,28 +2,37 @@
  * 路由组件出口文件
  */
 
-import AllPages from '../pages';
+import { lazy } from 'react';
+
+const Home = import('../pages/Home');
+const Coding = import('../pages/Coding');
+const Traveling = import('../pages/Traveling');
+const Trying = import('../pages/Trying');
 
 export default [
   {
     path: '/blog',
     exact: true,
-    main: AllPages.Home,
+    title: 'Home',
+    main: Home,
     routes: [
       {
         path: '/coding',
+        title: 'Coding',
         sidebar: 'nav.coding',
-        main: AllPages.Coding
+        component: Coding
       },
       {
         path: '/traveling',
+        title: 'Traveling',
         sidebar: 'nav.traveling',
-        main: AllPages.Traveling
+        component: Traveling
       },
       {
         path: '/trying',
+        title: 'Trying',
         sidebar: 'nav.trying',
-        main: AllPages.Trying
+        component: Trying
       }
     ]
   }

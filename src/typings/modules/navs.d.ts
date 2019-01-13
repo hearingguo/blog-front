@@ -1,5 +1,6 @@
 declare interface INavItem {
   path: string;
   sidebar: string;
-  main: any;
+  component: any;
+  title: string;
 }

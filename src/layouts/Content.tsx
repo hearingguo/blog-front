@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import route from '../routes/config';
-import AllPages from '../pages';
+import routeConfig from '../routes/config';
 import styled from 'styled-components';
 import styles from '../config/style';
 
@@ -20,9 +19,9 @@ class Content extends Component {
       // blog-main
       <StyleMain>
         <Switch>
-          {route[0].routes.map((item: INavItem, index: number) => {
-            return <Route path={`/blog${item.path}`} component={item.main} exact={true} />;
-          })}
+          {routeConfig[0].routes.map((item: INavItem, index: number) => (
+            <Route path={`/blog${item.path}`} component={item.component} exact={true} />
+          ))}
         </Switch>
       </StyleMain>
     );

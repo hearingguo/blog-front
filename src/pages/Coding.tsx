@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import List from '../layouts/List';
 
-import { getArticles } from '../service';
+// import { getArticles } from '../service';
 import { dispatch } from 'rxjs/internal/observable/pairs';
 
 const lists = [
