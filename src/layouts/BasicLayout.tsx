@@ -10,10 +10,8 @@ class WrapLayout extends Component {
       <div className="blog-wrap">
         {/* header */}
         <Header />
-
         {/* main */}
         <Content />
-
         {/* footer */}
         <Footer />
       </div>

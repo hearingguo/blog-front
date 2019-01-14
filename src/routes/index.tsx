@@ -1,5 +1,4 @@
-import * as React from 'react';
-import { Dispatch, bindActionCreators } from 'redux';
+import React, { Component, Suspense } from 'react';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { ConnectedRouter } from 'connected-react-router';
@@ -9,6 +8,7 @@ import { history } from '../store/configureStore';
 import BasicLayout from '../layouts/BasicLayout';
 import Home from '../pages/Home';
 import E404 from '../pages/E404';
+import Loading from '../components/common/Loading';
 
 export interface StateProps {
   locale: LocaleEntity;
@@ -17,18 +17,20 @@ export interface DispatchProps {
   fetchUserInfo: (ticket?: string) => void;
 }
 
-class Routes extends React.Component<StateProps, DispatchProps> {
+class Routes extends Component<StateProps, DispatchProps> {
   public render() {
     console.log(this.props);
     const { locale } = this.props;
     return (
       <IntlProvider locale={locale.language} messages={locale.app}>
         <ConnectedRouter history={history}>
-          <Switch>
-            <Route path="/blog" component={Home} exact={true} />
-            <Route path="/blog/:name" component={BasicLayout} exact={true} />
-            <Route path="/404" component={E404} exact={true} />
-          </Switch>
+          <Suspense fallback={<Loading />}>
+            <Switch>
+              <Route key="home" path="/blog" component={Home} exact={true} />
+              <Route key="features" path="/blog/:name" component={BasicLayout} exact={true} />
+              <Route key="404" component={E404} />
+            </Switch>
+          </Suspense>
         </ConnectedRouter>
       </IntlProvider>
     );

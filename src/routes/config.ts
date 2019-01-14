@@ -4,17 +4,17 @@
 
 import { lazy } from 'react';
 
-const Home = import('../pages/Home');
-const Coding = import('../pages/Coding');
-const Traveling = import('../pages/Traveling');
-const Trying = import('../pages/Trying');
+const Home = lazy(() => import('../pages/Home'));
+const Coding = lazy(() => import('../pages/Coding'));
+const Traveling = lazy(() => import('../pages/Traveling'));
+const Trying = lazy(() => import('../pages/Trying'));
 
 export default [
   {
     path: '/blog',
     exact: true,
     title: 'Home',
-    main: Home,
+    component: Home,
     routes: [
       {
         path: '/coding',
