@@ -4,7 +4,7 @@ import { FormattedMessage } from 'react-intl';
 import styles from '../config/style';
 import route from '../routes/config';
 import Search from '../components/common/Search';
-import logo from '../images/logo.png';
+import logo from '../assets/images/logo.png';
 
 const StyleHeader = styled.div`
   border-bottom: 1px solid ${styles.Color.border};

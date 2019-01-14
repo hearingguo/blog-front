@@ -3,9 +3,8 @@ import { Provider } from 'react-redux';
 import styled from 'styled-components';
 import configureStore from './store/configureStore';
 import Routes from './routes';
-
-import './App.less';
-import './less/index.less';
+import './assets/less/index.scss';
+import './App.scss';
 
 const StylePage = styled.div`
   height: 100%;
@@ -17,7 +16,7 @@ class App extends React.Component {
   public render() {
     return (
       <Provider store={configureStore()}>
-        <StylePage className="blog-page">
+        <StylePage>
           {/* Member Center */}
           <Routes />
         </StylePage>
