@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 import styled from 'styled-components';
 import configureStore from './store/configureStore';
 import Routes from './routes';
-import './assets/less/index.scss';
+import './assets/scss/index.scss';
 import './App.scss';
 
 const StylePage = styled.div`

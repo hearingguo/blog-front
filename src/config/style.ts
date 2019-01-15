@@ -1,7 +1,7 @@
 const Color = {
   white: '#fff',
   border: '#eee',
-  theme: '#555',
+  theme: '#666',
   themeDark: '#000',
   themeGray: '#ccc',
   themeGrayDark: '#aaa'
