@@ -15,6 +15,7 @@ class Lists extends Component<any> {
   }
 
   public render() {
+    console.log(this.props.lists);
     return (
       <StyleEssayList>
         <ul>

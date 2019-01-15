@@ -18,13 +18,13 @@ const StyleListItem = styled.li`
     left: -25px;
     width: 1px;
     height: 100%;
-    background: ${styles.Color.themeGray};
+    background: linear-gradient(180deg, ${styles.Color.themeGray} 0, rgba(85, 85, 85, 0));
   }
   article::after {
     top: 22px;
-    left: -31.5px;
-    width: 12px;
-    height: 12px;
+    left: -33px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background: ${styles.Color.white};
     border: 1px solid ${styles.Color.themeGray};
@@ -44,7 +44,7 @@ const StyleListItem = styled.li`
     display: block;
     font-style: normal;
     position: absolute;
-    left: -120px;
+    left: -128px;
     top: 22px;
     color: ${styles.Color.themeGray};
   }
