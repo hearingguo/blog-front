@@ -3,14 +3,16 @@ import { ofType, combineEpics } from 'redux-observable';
 import { mergeMap } from 'rxjs/operators';
 import { FETCH_ARTICLES, FETCH_ARTICLES_SUCCESS } from '../actions/ActionTypes';
 import { Action } from 'redux-actions';
+import { get } from '../service/axios';
 
-const fetcharticlesEpic = (action$: Observable<Action<IArticleItem[]>>) =>
+const fetchArticlesEpic = (action$: Observable<Action<IArticleItem[]>>) =>
   action$.pipe(
-    ofType(FETCH_ARTICLES)
-    // ,
-    // mergeMap(action =>
-    //   // ...
-    // );
+    ofType(FETCH_ARTICLES),
+    mergeMap(action =>
+      get('/article?').map(() => {
+        // ...
+      })
+    )
   );
 
-export default combineEpics(fetcharticlesEpic);
+export default combineEpics(fetchArticlesEpic);
