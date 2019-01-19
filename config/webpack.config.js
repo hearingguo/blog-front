@@ -101,6 +101,14 @@ module.exports = function(webpackEnv) {
           sourceMap: isEnvProduction && shouldUseSourceMap
         }
       });
+      if (preProcessor === 'sass-loader') {
+        loaders.push({
+          loader: require.resolve('sass-resources-loader'),
+          options: {
+            resources: paths.appVariable
+          }
+        });
+      }
     }
     return loaders;
   };
@@ -247,7 +255,8 @@ module.exports = function(webpackEnv) {
       alias: {
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
-        'react-native': 'react-native-web'
+        'react-native': 'react-native-web',
+        '@': paths.appSrc
       },
       plugins: [
         // Adds support for installing with Plug'n'Play, leading to faster installs and adding
