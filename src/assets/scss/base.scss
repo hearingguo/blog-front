@@ -8,6 +8,9 @@ html, body {
 
 html {
   font-size: 3.75vw;
+  * {
+    box-sizing: border-box;
+  }
 }
 
 @media screen and (min-width: 768px) {

@@ -7,6 +7,7 @@ import Search from '../components/common/Search';
 import logo from '../assets/images/logo.png';
 
 const StyleHeader = styled.div`
+  overflow: hidden;
   border-bottom: 1px solid ${styles.Color.border};
   padding: ${styles.Gap.l};
   box-shadow: ${styles.Shadow.blackBottom};

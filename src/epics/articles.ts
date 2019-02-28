@@ -7,12 +7,10 @@ import { get } from '../service/axios';
 
 const fetchArticlesEpic = (action$: Observable<Action<IArticleItem[]>>) =>
   action$.pipe(
-    ofType(FETCH_ARTICLES),
-    mergeMap(action =>
-      get('/article?').map(() => {
-        // ...
-      })
-    )
+    ofType(FETCH_ARTICLES)
+    // mergeMap((action: any) => {
+    //   // getArticles()
+    //  })
   );
 
 export default combineEpics(fetchArticlesEpic);

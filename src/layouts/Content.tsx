@@ -10,7 +10,7 @@ const StyleMain = styled.div`
   padding: ${styles.Gap.l};
   width: 100%;
   min-height: calc(100% - 206px);
-  max-width: 1000px;
+  max-width: 1100px;
 `;
 
 class Content extends Component {
