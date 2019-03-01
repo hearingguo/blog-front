@@ -23,4 +23,6 @@ const observableRequest = (request: AxiosPromise) =>
 const get = (url: string, config?: AxiosRequestConfig) => observableRequest(ax.get(url, config));
 const post = (url: string, data?: any, config?: AxiosRequestConfig) => observableRequest(ax.post(url, data, config));
 
-export { get, post };
+const put = (url: string, data?: any, config?: AxiosRequestConfig) => observableRequest(ax.put(url, data, config));
+
+export { get, post, put };

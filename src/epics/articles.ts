@@ -1,16 +1,16 @@
-import { Observable, of } from 'rxjs';
-import { ofType, combineEpics } from 'redux-observable';
-import { mergeMap } from 'rxjs/operators';
-import { FETCH_ARTICLES, FETCH_ARTICLES_SUCCESS } from '../actions/ActionTypes';
-import { Action } from 'redux-actions';
-import { get } from '../service/axios';
+import { combineEpics } from 'redux-observable';
+import { map } from 'rxjs/operators';
+import createEpic from '@/utils/createEpic';
+import { FETCH_ARTICLES, FETCH_ARTICLES_SUCCESS } from '@/actions/ActionTypes';
+import { getArticles } from '@/service';
 
-const fetchArticlesEpic = (action$: Observable<Action<IArticleItem[]>>) =>
-  action$.pipe(
-    ofType(FETCH_ARTICLES)
-    // mergeMap((action: any) => {
-    //   // getArticles()
-    //  })
-  );
+const fetchArticlesEpic = createEpic<any>(FETCH_ARTICLES, action =>
+  getArticles(action.payload).pipe(
+    map((response: Ajax.Response) => ({
+      type: FETCH_ARTICLES_SUCCESS,
+      payload: response.data
+    }))
+  )
+);
 
 export default combineEpics(fetchArticlesEpic);
