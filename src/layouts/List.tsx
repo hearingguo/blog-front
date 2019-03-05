@@ -9,7 +9,11 @@ const StyleEssayList = styled.div`
   }
 `;
 
-class Lists extends Component<any> {
+interface IProps {
+  lists: any[];
+}
+
+class Lists extends Component<IProps> {
   constructor(props: any) {
     super(props);
   }

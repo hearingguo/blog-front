@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import List from '../layouts/List';
-
-// import { getArticles } from '../service';
 import { dispatch } from 'rxjs/internal/observable/pairs';
+import { connect } from 'react-redux';
+import { Dispatch, bindActionCreators } from 'redux';
+import * as actionCreators from '@/epics/articles';
 
 const lists = [
   {
@@ -23,15 +24,26 @@ const lists = [
   }
 ];
 
-class Coding extends Component {
-  // private componentDidMount = async () => {
-  //   const res = getArticles({});
-  //   dispatch('');
-  // };
+interface StateProps {}
+
+interface DispatchProps {
+  fetchArticles: (data: IArticleGetParams) => void;
+}
+
+class Coding extends Component<StateProps & DispatchProps> {
+  public componentDidMount = async () => {
+    const { fetchArticles } = this.props;
+    // await fetchArticles({
+
+    // });
+  };
 
   public render() {
     return <List lists={lists} />;
   }
 }
 
-export default Coding;
+export default connect<StateProps, DispatchProps, {}, RootState>(
+  (state: RootState) => ({ articles: state.articles }),
+  (dispatch: Dispatch) => bindActionCreators<any, any>(actionCreators, dispatch)
+)(Coding);
