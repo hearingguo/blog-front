@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import List from '../layouts/List';
-import { dispatch } from 'rxjs/internal/observable/pairs';
 import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
 import * as actionCreators from '@/epics/articles';

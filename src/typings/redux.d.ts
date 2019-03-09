@@ -10,4 +10,5 @@ declare interface RootState {
   locale: LocaleEntity;
   user: UserEntity;
   articles: IArticleItem[];
+  classifies: IClassifyItem[];
 }

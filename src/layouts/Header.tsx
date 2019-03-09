@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
+import { connect } from 'react-redux';
+import { Dispatch, bindActionCreators } from 'redux';
+import * as actionCreators from '@/epics/classifies';
 import styles from '../config/style';
 import route from '../routes/config';
 import Search from '../components/common/Search';
@@ -44,7 +47,19 @@ const StyleNav = styled.a`
   }
 `;
 
-class Header extends Component {
+interface StateProps {
+  classifies: IClassifyItem[];
+}
+
+interface DispatchProps {
+  fetchClassifies: (data?: any) => void;
+}
+
+class Header extends Component<StateProps & DispatchProps> {
+  public componentDidMount() {
+    this.props.fetchClassifies();
+  }
+
   public render() {
     return (
       // blog-header
@@ -70,4 +85,7 @@ class Header extends Component {
   }
 }
 
-export default Header;
+export default connect<StateProps, DispatchProps, {}, RootState>(
+  (state: RootState) => ({ classifies: state.classifies }),
+  (dispatch: Dispatch) => bindActionCreators<any, any>(actionCreators, dispatch)
+)(Header);
