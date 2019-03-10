@@ -1,11 +1,21 @@
 import { combineReducers } from 'redux';
+import { Reducer } from 'redux-actions';
 import locale from './locale';
 import articles from './articles';
 import classifies from './classifies';
-import { Reducer } from 'redux-actions';
+import links from './links';
 
-export default combineReducers({
+type RootStates = LocaleEntity | IListItem<IArticleItem> | IListItem<IClassifyItem> | IListItem<ILinkItem>;
+
+interface Reducers {
+  [key: string]: Reducer<RootStates | undefined, RootStates>;
+}
+
+const reducerMap = {
   locale,
   articles,
-  classifies
-} as any);
+  classifies,
+  links
+} as Reducers;
+
+export default combineReducers(reducerMap);

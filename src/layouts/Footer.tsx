@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { Dispatch, bindActionCreators } from 'redux';
 import styled from 'styled-components';
+import * as actionCreators from '@/actions/links';
 import styles from '../config/style';
+import { FOOTER_IN_ITEMS } from '@/contants/index';
+import { injectIntl, InjectedIntlProps, FormattedMessage } from 'react-intl';
 
 const StyleFooter = styled.div`
   padding: ${styles.Gap.s};
@@ -40,28 +45,45 @@ const StyleLink = styled.span`
   }
 `;
 
-class Footer extends Component {
+interface StateProps {
+  links: IListItem<ILinkItem>;
+}
+
+interface DispatchProps {
+  fetchLinks: () => void;
+}
+
+class Footer extends Component<StateProps & DispatchProps & InjectedIntlProps> {
+  public componentDidMount() {
+    const { fetchLinks } = this.props;
+    fetchLinks();
+  }
+
   public render() {
-    // blog-footer
+    const { links, intl } = this.props;
     return (
       <StyleFooter>
         <StyleFooterItem>
-          {['文天祥', '李白', '杜牧'].map((item: string, index: number) => {
+          {links.list.map((item, index) => {
             return (
               <StyleLink key={index}>
                 <span dangerouslySetInnerHTML={{ __html: index !== 0 ? '&nbsp;&nbsp;&bull;&nbsp;&nbsp;' : '' }} />
-                <a href="">{item}</a>
+                <a target="_blank" href={item.url}>
+                  {item.name}
+                </a>
               </StyleLink>
             );
           })}
         </StyleFooterItem>
         <StyleFooterItemInline>
           <StyleBorder />
-          {['我', '归档'].map((item: string, index: number) => {
+          {FOOTER_IN_ITEMS.map((item, index) => {
             return (
               <StyleLink key={index}>
                 <span dangerouslySetInnerHTML={{ __html: index !== 0 ? '&nbsp;&nbsp;&bull;&nbsp;&nbsp;' : '' }} />
-                <a href="">{item}</a>
+                <a href={item.path}>
+                  <FormattedMessage id={item.id} />
+                </a>
               </StyleLink>
             );
           })}
@@ -71,4 +93,7 @@ class Footer extends Component {
   }
 }
 
-export default Footer;
+export default connect<StateProps, DispatchProps, {}, RootState>(
+  (state: RootState) => ({ links: state.links }),
+  (dispatch: Dispatch) => bindActionCreators(actionCreators, dispatch)
+)(injectIntl(Footer));

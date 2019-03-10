@@ -23,6 +23,6 @@ declare namespace Ajax {
      * DATA
      * @type {*}
      */
-    data?: T;
+    result?: T;
   }
 }

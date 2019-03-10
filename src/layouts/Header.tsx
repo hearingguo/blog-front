@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
-import * as actionCreators from '@/epics/classifies';
+import * as actionCreators from '@/actions/classifies';
 import styles from '../config/style';
 import route from '../routes/config';
 import Search from '../components/common/Search';
@@ -48,7 +48,7 @@ const StyleNav = styled.a`
 `;
 
 interface StateProps {
-  classifies: IClassifyItem[];
+  classifies: IListItem<IClassifyItem>;
 }
 
 interface DispatchProps {
@@ -56,11 +56,17 @@ interface DispatchProps {
 }
 
 class Header extends Component<StateProps & DispatchProps> {
+  constructor(props: StateProps & DispatchProps) {
+    super(props);
+  }
+
   public componentDidMount() {
-    this.props.fetchClassifies();
+    const { fetchClassifies } = this.props;
+    fetchClassifies();
   }
 
   public render() {
+    const { classifies } = this.props;
     return (
       // blog-header
       <StyleHeader>
@@ -69,12 +75,8 @@ class Header extends Component<StateProps & DispatchProps> {
           {/* blog-header-logo */}
           <StyleLogo />
           <StyleNavs>
-            {route[0].routes.map((item: INavItem, index: number) => {
-              return (
-                <StyleNav key={index}>
-                  <FormattedMessage id={item.sidebar} />
-                </StyleNav>
-              );
+            {classifies.list.map((item, index) => {
+              return <StyleNav key={index}>{item.title}</StyleNav>;
             })}
           </StyleNavs>
         </div>
@@ -87,5 +89,5 @@ class Header extends Component<StateProps & DispatchProps> {
 
 export default connect<StateProps, DispatchProps, {}, RootState>(
   (state: RootState) => ({ classifies: state.classifies }),
-  (dispatch: Dispatch) => bindActionCreators<any, any>(actionCreators, dispatch)
+  (dispatch: Dispatch) => bindActionCreators(actionCreators, dispatch)
 )(Header);

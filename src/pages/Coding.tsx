@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import List from '../layouts/List';
 import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
-import * as actionCreators from '@/epics/articles';
+import * as actionCreators from '@/actions/articles';
 
 const lists = [
   {
@@ -32,8 +32,8 @@ interface DispatchProps {
 class Coding extends Component<StateProps & DispatchProps> {
   public componentDidMount = async () => {
     const { fetchArticles } = this.props;
-    // await fetchArticles({
-
+    // fetchArticles({
+    //   classify:
     // });
   };
 
@@ -44,5 +44,5 @@ class Coding extends Component<StateProps & DispatchProps> {
 
 export default connect<StateProps, DispatchProps, {}, RootState>(
   (state: RootState) => ({ articles: state.articles }),
-  (dispatch: Dispatch) => bindActionCreators<any, any>(actionCreators, dispatch)
+  (dispatch: Dispatch) => bindActionCreators(actionCreators, dispatch)
 )(Coding);

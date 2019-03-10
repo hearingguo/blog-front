@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, lazy } from 'react';
+import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import routeConfig from '../routes/config';
 import styled from 'styled-components';
@@ -13,19 +14,38 @@ const StyleMain = styled.div`
   max-width: 1100px;
 `;
 
-class Content extends Component {
+interface StateProps {
+  classifies: IListItem<IClassifyItem>;
+}
+
+class Content extends Component<StateProps> {
   public render() {
+    const { classifies } = this.props;
     return (
       // blog-main
       <StyleMain>
         <Switch>
-          {routeConfig[0].routes.map((item: INavItem, index: number) => (
-            <Route path={`/blog${item.path}`} component={item.component} exact={true} />
-          ))}
+          {classifies.list.map((item, index) => {
+            const route = routeConfig[0].routes.filter((itemIn, index) => {
+              return itemIn.title === item.name;
+            });
+            return (
+              <Route
+                key={index}
+                exact={true}
+                path={`/blog/${item.name}`}
+                component={lazy(() =>
+                  import(`@/pages/${item.name.toLowerCase().replace(/^[a-z]/g, (L: string) => L.toUpperCase())}`)
+                )}
+              />
+            );
+          })}
         </Switch>
       </StyleMain>
     );
   }
 }
 
-export default Content;
+export default connect<StateProps, null, {}, RootState>((state: RootState) => ({ classifies: state.classifies }))(
+  Content
+);

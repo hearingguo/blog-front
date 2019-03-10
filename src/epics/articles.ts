@@ -8,7 +8,7 @@ const fetchArticlesEpic = createEpic<IArticleGetParams>(FETCH_ARTICLES, action =
   getArticles(action.payload).pipe(
     map((response: Ajax.Response) => ({
       type: FETCH_ARTICLES_SUCCESS,
-      payload: response.data
+      payload: response.result
     }))
   )
 );

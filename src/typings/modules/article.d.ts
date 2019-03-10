@@ -6,14 +6,9 @@ declare interface IMeta {
 
 declare interface IArticleGetParams {
   classify: string;
+  keyword?: string;
   cPage?: number;
   sPage?: number;
-  keyword?: string;
-  state?: string | number;
-  publish?: string | number;
-  tag?: string[];
-  date?: string;
-  hot?: boolean;
 }
 
 declare interface IArticleItem {

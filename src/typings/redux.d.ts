@@ -1,14 +1,10 @@
-declare interface RootState {
-  locale: LocaleEntity;
-  user: UserEntity;
-}
 declare interface RootAction<T = {}> {
   type: string;
   payload: T;
 }
 declare interface RootState {
   locale: LocaleEntity;
-  user: UserEntity;
-  articles: IArticleItem[];
-  classifies: IClassifyItem[];
+  articles: IListItem<IArticleItem>;
+  classifies: IListItem<IClassifyItem>;
+  links: IListItem<ILinkItem>;
 }

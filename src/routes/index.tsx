@@ -19,7 +19,6 @@ export interface DispatchProps {
 
 class Routes extends Component<StateProps, DispatchProps> {
   public render() {
-    console.log(this.props);
     const { locale } = this.props;
     return (
       <IntlProvider locale={locale.language} messages={locale.app}>
