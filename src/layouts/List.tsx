@@ -10,7 +10,7 @@ const StyleEssayList = styled.div`
 `;
 
 interface IProps {
-  lists: any[];
+  articles: IListItem<any>;
 }
 
 class Lists extends Component<IProps> {
@@ -19,11 +19,11 @@ class Lists extends Component<IProps> {
   }
 
   public render() {
-    console.log(this.props.lists);
+    const { articles } = this.props;
     return (
       <StyleEssayList>
         <ul>
-          {this.props.lists.map((item: number, index: number) => {
+          {articles.list.map((item: number, index: number) => {
             return <ListItem key={index} article={item} />;
           })}
         </ul>

@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import { Route, Switch } from 'react-router-dom';
 import routeConfig from '../routes/config';
 import styled from 'styled-components';
-import styles from '../config/style';
+import styles from '@/config/style';
+
+const Articles = lazy(() => import('../pages/Articles'));
 
 const StyleMain = styled.div`
   position: relative;
@@ -26,19 +28,7 @@ class Content extends Component<StateProps> {
       <StyleMain>
         <Switch>
           {classifies.list.map((item, index) => {
-            const route = routeConfig[0].routes.filter((itemIn, index) => {
-              return itemIn.title === item.name;
-            });
-            return (
-              <Route
-                key={index}
-                exact={true}
-                path={`/blog/${item.name}`}
-                component={lazy(() =>
-                  import(`@/pages/${item.name.toLowerCase().replace(/^[a-z]/g, (L: string) => L.toUpperCase())}`)
-                )}
-              />
-            );
+            return <Route key={index} exact={true} path={`/blog/${item.name}`} component={Articles} />;
           })}
         </Switch>
       </StyleMain>

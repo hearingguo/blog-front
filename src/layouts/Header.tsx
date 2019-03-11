@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
 import * as actionCreators from '@/actions/classifies';
 import styles from '../config/style';
-import route from '../routes/config';
 import Search from '../components/common/Search';
 import logo from '../assets/images/logo.png';
 
@@ -56,10 +54,6 @@ interface DispatchProps {
 }
 
 class Header extends Component<StateProps & DispatchProps> {
-  constructor(props: StateProps & DispatchProps) {
-    super(props);
-  }
-
   public componentDidMount() {
     const { fetchClassifies } = this.props;
     fetchClassifies();
