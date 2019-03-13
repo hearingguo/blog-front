@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
-import * as actionCreators from '@/actions/classifies';
 import styles from '../config/style';
 import Search from '../components/common/Search';
 import logo from '../assets/images/logo.png';
@@ -49,16 +48,7 @@ interface StateProps {
   classifies: IListItem<IClassifyItem>;
 }
 
-interface DispatchProps {
-  fetchClassifies: (data?: any) => void;
-}
-
-class Header extends Component<StateProps & DispatchProps> {
-  public componentDidMount() {
-    const { fetchClassifies } = this.props;
-    fetchClassifies();
-  }
-
+class Header extends Component<StateProps> {
   public render() {
     const { classifies } = this.props;
     return (
@@ -81,7 +71,6 @@ class Header extends Component<StateProps & DispatchProps> {
   }
 }
 
-export default connect<StateProps, DispatchProps, {}, RootState>(
-  (state: RootState) => ({ classifies: state.classifies }),
-  (dispatch: Dispatch) => bindActionCreators(actionCreators, dispatch)
-)(Header);
+export default connect<StateProps, null, {}, RootState>((state: RootState) => ({ classifies: state.classifies }))(
+  Header
+);
