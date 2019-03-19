@@ -32,9 +32,9 @@ class Coding extends Component<StateProps & DispatchProps & RouteComponentProps,
     };
   }
 
-  public componentDidMount = async () => {
-    const { match, fetchArticles, classifies } = this.props;
-    const pathName = match.path.split('/').pop() || '';
+  private init = () => {
+    const { history, fetchArticles, classifies } = this.props;
+    const pathName = history.location.pathname.split('/').pop() || '';
     const articleClassifyId = getArticleClassifyId(classifies.list, pathName);
     this.setState(
       {
@@ -48,9 +48,19 @@ class Coding extends Component<StateProps & DispatchProps & RouteComponentProps,
     );
   };
 
+  public componentWillReceiveProps = (nextProps: RouteComponentProps) => {
+    console.log(nextProps);
+    //  this.init();
+  };
+
+  public componentDidMount = async () => {
+    this.init();
+  };
+
   public render() {
-    const { articles } = this.props;
-    return <List articles={articles} />;
+    const { articles, history } = this.props;
+    console.log(history);
+    return <List articles={articles} path={history.location.pathname} />;
   }
 }
 

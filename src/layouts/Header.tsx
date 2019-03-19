@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import styles from '../config/style';
 import Search from '../components/common/Search';
 import logo from '../assets/images/logo.png';
-import { Link } from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router';
 
 const StyleHeader = styled.div`
   overflow: hidden;
@@ -26,11 +26,11 @@ const StyleLogo = styled.a`
   vertical-align: middle;
 `;
 
-const StyleNavs = styled.div`
+const StyleNavs = styled.ul`
   display: inline-block;
 `;
 
-const StyleNav = styled.a`
+const StyleNav = styled.li`
   display: inline-block;
   padding: 0 ${styles.Gap.s};
   cursor: pointer;
@@ -48,7 +48,7 @@ interface StateProps {
   classifies: IListItem<IClassifyItem>;
 }
 
-class Header extends Component<StateProps> {
+class Header extends Component<StateProps & RouteComponentProps> {
   public render() {
     const { classifies } = this.props;
     return (
@@ -61,9 +61,14 @@ class Header extends Component<StateProps> {
           <StyleNavs>
             {classifies.list.map((item, index) => {
               return (
-                <Link to={`/blog/${item.name}`} key={index}>
-                  <StyleNav key={index}>{item.title}</StyleNav>
-                </Link>
+                <StyleNav
+                  key={index}
+                  onClick={() => {
+                    this.props.history.push(`/blog/${item.name}`);
+                  }}
+                >
+                  {item.title}
+                </StyleNav>
               );
             })}
           </StyleNavs>
@@ -76,5 +81,5 @@ class Header extends Component<StateProps> {
 }
 
 export default connect<StateProps, null, {}, RootState>((state: RootState) => ({ classifies: state.classifies }))(
-  Header
+  withRouter(Header)
 );
