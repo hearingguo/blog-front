@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
-import { Dispatch, bindActionCreators } from 'redux';
 import styles from '../config/style';
 import Search from '../components/common/Search';
 import logo from '../assets/images/logo.png';
+import { Link } from 'react-router-dom';
 
 const StyleHeader = styled.div`
   overflow: hidden;
@@ -60,7 +60,11 @@ class Header extends Component<StateProps> {
           <StyleLogo />
           <StyleNavs>
             {classifies.list.map((item, index) => {
-              return <StyleNav key={index}>{item.title}</StyleNav>;
+              return (
+                <Link to={`/blog/${item.name}`} key={index}>
+                  <StyleNav key={index}>{item.title}</StyleNav>
+                </Link>
+              );
             })}
           </StyleNavs>
         </div>

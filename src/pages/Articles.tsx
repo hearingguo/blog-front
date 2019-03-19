@@ -34,13 +34,15 @@ class Coding extends Component<StateProps & DispatchProps & RouteComponentProps,
 
   public componentDidMount = async () => {
     const { match, fetchArticles, classifies } = this.props;
+    const pathName = match.path.split('/').pop() || '';
+    const articleClassifyId = getArticleClassifyId(classifies.list, pathName);
     this.setState(
       {
-        articleClassifyId: getArticleClassifyId(classifies.list, match.path.split('/').pop() || '')
+        articleClassifyId
       },
       () => {
         fetchArticles({
-          classify: this.state.articleClassifyId
+          classify: articleClassifyId
         });
       }
     );
