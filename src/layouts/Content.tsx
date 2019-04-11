@@ -28,13 +28,11 @@ class Content extends Component<StateProps> {
       <StyleMain>
         <Switch>
           {classifies.list.map((item, index) => {
+            return <Route key={`classifies-${index}`} exact={true} path={`/blog/${item.name}`} component={Articles} />;
+          })}
+          {routeConfig[0].routes.map((item, index) => {
             return (
-              <Route
-                key={index}
-                exact={true}
-                path={`/blog/${item.name}`}
-                component={lazy(() => import('../pages/Articles'))}
-              />
+              <Route key={`routes-${index}`} exact={true} path={`/blog/${item.name}`} component={item.component} />
             );
           })}
         </Switch>
