@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
 import * as actionCreators from '@/actions/articles';
 import { withRouter, RouteComponentProps } from 'react-router';
+import * as H from 'history';
 
 interface StateProps {
   classifies: IListItem<IClassifyItem>;
@@ -24,12 +25,15 @@ const getArticleClassifyId = (classifies: IClassifyItem[], name: string) => {
   return temp.length ? temp[0]._id : '';
 };
 
-class Coding extends Component<StateProps & DispatchProps & RouteComponentProps, State> {
+class Article extends Component<StateProps & DispatchProps & RouteComponentProps, State> {
   constructor(props: StateProps & DispatchProps & RouteComponentProps) {
     super(props);
     this.state = {
       articleClassifyId: ''
     };
+    this.props.history.listen((location: H.Location) => {
+      this.init();
+    });
   }
 
   private init = () => {
@@ -48,23 +52,26 @@ class Coding extends Component<StateProps & DispatchProps & RouteComponentProps,
     );
   };
 
-  public componentWillReceiveProps = (nextProps: RouteComponentProps) => {
-    console.log(nextProps);
-    //  this.init();
-  };
+  // public componentWillReceiveProps(nextProps: RouteComponentProps) {
+  //   console.log(nextProps);
+  //   if(nextProps.location.pathname !== this.props.location.pathname){
+  //     this.init();
+  //   }
+  // }
 
-  public componentDidMount = async () => {
+  public componentDidMount() {
     this.init();
-  };
+  }
 
   public render() {
     const { articles, history } = this.props;
-    console.log(history);
     return <List articles={articles} path={history.location.pathname} />;
   }
 }
 
-export default connect<StateProps, DispatchProps, {}, RootState>(
-  (state: RootState) => ({ classifies: state.classifies, articles: state.articles }),
-  (dispatch: Dispatch) => bindActionCreators(actionCreators, dispatch)
-)(withRouter(Coding));
+export default withRouter(
+  connect<StateProps, DispatchProps, {}, RootState>(
+    (state: RootState) => ({ classifies: state.classifies, articles: state.articles }),
+    (dispatch: Dispatch) => bindActionCreators(actionCreators, dispatch)
+  )(Article)
+);

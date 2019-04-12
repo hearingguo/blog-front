@@ -3,7 +3,9 @@ import styles from '../../config/style';
 import styled from 'styled-components';
 
 const StylePagination = styled.div`
-  position: relative;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   display: flex;
   padding: ${styles.Gap.l} 0 ${styles.Gap.l} 95px;
   align-items: center;

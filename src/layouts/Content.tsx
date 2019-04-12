@@ -5,7 +5,7 @@ import routeConfig from '../routes/config';
 import styled from 'styled-components';
 import styles from '@/config/style';
 
-const Articles = lazy(() => import('../pages/Articles'));
+const Articles = lazy(() => import('@/pages/Articles'));
 
 const StyleMain = styled.div`
   position: relative;

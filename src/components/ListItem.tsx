@@ -31,13 +31,27 @@ const StyleListItem = styled.li`
   }
   .title {
     font-weight: bold;
+    cursor: pointer;
+    &:hover {
+      text-decoration: underline;
+    }
   }
   .desc {
     margin: ${styles.Gap.xl} 0;
   }
   .others {
+    display: flex;
+    align-items: center;
     font-size: ${styles.Size.xs};
     color: ${styles.Color.themeGrayDark};
+    > span {
+      display: flex;
+      margin-right: ${styles.Gap.m};
+      align-items: center;
+      > em {
+        margin-right: ${styles.Gap.xs};
+      }
+    }
   }
 
   i {
@@ -60,20 +74,29 @@ class ListItem extends Component<IProps> {
   }
 
   public render() {
-    const { title, desc, time, reads, comments, likes } = this.props.article;
+    const { title, description, createDate, meta } = this.props.article;
     return (
       <StyleListItem>
         <article>
-          <h1 className="title">{title}</h1>
-          <div className="desc">{desc}</div>
+          <h2 className="title">{title}</h2>
+          <div className="desc">{description}</div>
           <div className="others">
-            <span className="others-reads">{reads}</span>
-            <span className="others-comments">{comments}</span>
-            <span className="others-likes">{likes}</span>
+            <span className="others-reads">
+              <em className="iconfont icon-view" />
+              {meta.views}
+            </span>
+            <span className="others-comments">
+              <em className="iconfont icon-comment" />
+              {meta.comments}
+            </span>
+            <span className="others-likes">
+              <em className="iconfont icon-heart" />
+              {meta.likes}
+            </span>
           </div>
         </article>
         <i>
-          <FormattedDate value={new Date(time)} />
+          <FormattedDate value={new Date(createDate)} />
         </i>
       </StyleListItem>
     );
