@@ -31,9 +31,6 @@ class Article extends Component<StateProps & DispatchProps & RouteComponentProps
     this.state = {
       articleClassifyId: ''
     };
-    this.props.history.listen((location: H.Location) => {
-      this.init();
-    });
   }
 
   private init = () => {
@@ -52,20 +49,19 @@ class Article extends Component<StateProps & DispatchProps & RouteComponentProps
     );
   };
 
-  // public componentWillReceiveProps(nextProps: RouteComponentProps) {
-  //   console.log(nextProps);
-  //   if(nextProps.location.pathname !== this.props.location.pathname){
-  //     this.init();
-  //   }
-  // }
+  public componentDidUpdate(nextProps: RouteComponentProps) {
+    if (nextProps.location.pathname !== this.props.location.pathname) {
+      this.init();
+    }
+  }
 
   public componentDidMount() {
     this.init();
   }
 
   public render() {
-    const { articles, history } = this.props;
-    return <List articles={articles} path={history.location.pathname} />;
+    const { articles } = this.props;
+    return <List articles={articles} />;
   }
 }
 

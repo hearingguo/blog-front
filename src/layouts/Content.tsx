@@ -4,6 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import routeConfig from '../routes/config';
 import styled from 'styled-components';
 import styles from '@/config/style';
+import { withRouter, RouteComponentProps } from 'react-router';
 
 const Articles = lazy(() => import('@/pages/Articles'));
 
@@ -20,7 +21,7 @@ interface StateProps {
   classifies: IListItem<IClassifyItem>;
 }
 
-class Content extends Component<StateProps> {
+class Content extends Component<StateProps & RouteComponentProps> {
   public render() {
     const { classifies } = this.props;
     return (
@@ -41,6 +42,6 @@ class Content extends Component<StateProps> {
   }
 }
 
-export default connect<StateProps, null, {}, RootState>((state: RootState) => ({ classifies: state.classifies }))(
-  Content
+export default withRouter(
+  connect<StateProps, null, {}, RootState>((state: RootState) => ({ classifies: state.classifies }))(Content)
 );
