@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
 import * as actionCreators from '@/actions/articles';
 import { withRouter, RouteComponentProps } from 'react-router';
-import * as H from 'history';
 
 interface StateProps {
   classifies: IListItem<IClassifyItem>;
@@ -14,7 +13,6 @@ interface StateProps {
 interface DispatchProps {
   fetchArticles: (data: IArticleGetParams) => void;
 }
-
 interface State {
   articleClassifyId: string;
 }
@@ -57,6 +55,7 @@ class Article extends Component<StateProps & DispatchProps & RouteComponentProps
 
   public componentDidMount() {
     this.init();
+    console.log(this.props.match);
   }
 
   public render() {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { FormattedDate } from 'react-intl';
+import { withRouter, RouteComponentProps } from 'react-router';
 import styled from 'styled-components';
 import styles from '../config/style';
 
@@ -64,7 +65,7 @@ const StyleListItem = styled.li`
   }
 `;
 
-interface IProps {
+interface IProps extends RouteComponentProps {
   article: any;
 }
 
@@ -103,4 +104,4 @@ class ListItem extends Component<IProps> {
   }
 }
 
-export default ListItem;
+export default withRouter(ListItem);

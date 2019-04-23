@@ -5,6 +5,7 @@ import routeConfig from '../routes/config';
 import styled from 'styled-components';
 import styles from '@/config/style';
 import { withRouter, RouteComponentProps } from 'react-router';
+import E404 from '../pages/E404';
 
 const Articles = lazy(() => import('@/pages/Articles'));
 
@@ -22,20 +23,28 @@ interface StateProps {
 }
 
 class Content extends Component<StateProps & RouteComponentProps> {
+  private getComponent() {
+    const { classifies, match } = this.props;
+    // @ts-ignore
+    const classify = classifies.list.filter(item => item.name === match.params.name);
+    // @ts-ignore
+    const route = routeConfig[0].routes.filter(item => item.name === match.params.name);
+    if (classify.length) {
+      return <Articles />;
+    } else if (route.length) {
+      const Comp = lazy(() => import(`@/pages/${route[0].component}`));
+      return <Comp />;
+    } else {
+      return <E404 />;
+    }
+  }
+
   public render() {
-    const { classifies } = this.props;
     return (
       // blog-main
       <StyleMain>
         <Switch>
-          {classifies.list.map((item, index) => {
-            return <Route key={`classifies-${index}`} exact={true} path={`/blog/${item.name}`} component={Articles} />;
-          })}
-          {routeConfig[0].routes.map((item, index) => {
-            return (
-              <Route key={`routes-${index}`} exact={true} path={`/blog/${item.name}`} component={item.component} />
-            );
-          })}
+          <Route exact={true} path="/blog/:name" component={() => this.getComponent()} />
         </Switch>
       </StyleMain>
     );

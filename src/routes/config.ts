@@ -5,8 +5,6 @@
 import { lazy } from 'react';
 
 const Home = lazy(() => import('../pages/Home'));
-const Sitemap = lazy(() => import('../pages/Sitemap'));
-const About = lazy(() => import('../pages/About'));
 
 export default [
   {
@@ -19,13 +17,13 @@ export default [
         path: '/sitemap',
         title: '归档',
         name: 'sitemap',
-        component: Sitemap
+        component: 'Sitemap'
       },
       {
         path: '/about',
         title: '关于我',
         name: 'about',
-        component: About
+        component: 'About'
       }
     ]
   }
