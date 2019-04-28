@@ -29,6 +29,7 @@ class Content extends Component<StateProps & RouteComponentProps> {
     const classify = classifies.list.filter(item => item.name === match.params.name);
     // @ts-ignore
     const route = routeConfig[0].routes.filter(item => item.name === match.params.name);
+
     if (classify.length) {
       return <Articles />;
     } else if (route.length) {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styles from '../../config/style';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 
 const StylePagination = styled.div`
   position: absolute;
@@ -32,11 +33,15 @@ const StylePagination = styled.div`
   }
 `;
 
-class Pagination extends Component {
+interface StateProps {
+  articles: IListItem<IArticleItem>;
+}
+class Pagination extends Component<StateProps> {
   public render() {
+    const { pagination } = this.props.articles;
     return (
       <StylePagination>
-        <span className="page-num">1 / 9</span>
+        <span className="page-num">{`${pagination.page} / ${Math.ceil(pagination.total / pagination.limit)}`}</span>
         <span className="page-ctrl">
           <em className="iconfont icon-left" />
           <em className="iconfont icon-right" />
@@ -46,4 +51,6 @@ class Pagination extends Component {
   }
 }
 
-export default Pagination;
+export default connect<StateProps, null, {}, RootState>((state: RootState) => ({ articles: state.articles }))(
+  Pagination
+);

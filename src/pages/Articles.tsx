@@ -55,7 +55,6 @@ class Article extends Component<StateProps & DispatchProps & RouteComponentProps
 
   public componentDidMount() {
     this.init();
-    console.log(this.props.match);
   }
 
   public render() {
