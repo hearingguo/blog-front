@@ -6,6 +6,7 @@ import styled from 'styled-components';
 import styles from '@/config/style';
 import { withRouter, RouteComponentProps } from 'react-router';
 import E404 from '../pages/E404';
+import Profile from '../pages/Profile';
 
 const Articles = lazy(() => import('@/pages/Articles'));
 
@@ -46,6 +47,7 @@ class Content extends Component<StateProps & RouteComponentProps> {
       <StyleMain>
         <Switch>
           <Route exact={true} path="/blog/:name" component={() => this.getComponent()} />
+          <Route exact={true} path="/blog/:name/:id" component={Profile} />
         </Switch>
       </StyleMain>
     );

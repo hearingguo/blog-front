@@ -74,12 +74,23 @@ class ListItem extends Component<IProps> {
     super(props);
   }
 
+  private handleToProfile = (id: string) => {
+    this.props.history.push(`${this.props.match.url}/${id}`);
+  };
+
   public render() {
-    const { title, description, createDate, meta } = this.props.article;
+    const { title, description, createDate, meta, _id } = this.props.article;
     return (
       <StyleListItem>
         <article>
-          <h2 className="title">{title}</h2>
+          <h2
+            className="title"
+            onClick={() => {
+              this.handleToProfile(_id);
+            }}
+          >
+            {title}
+          </h2>
           <div className="desc">{description}</div>
           <div className="others">
             <span className="others-reads">
