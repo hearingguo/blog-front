@@ -11,7 +11,6 @@ const StyleEssayList = styled.div`
 
 interface IProps {
   articles: IListItem<any>;
-  path: string;
 }
 
 class Lists extends Component<IProps> {

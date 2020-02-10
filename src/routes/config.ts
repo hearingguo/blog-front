@@ -5,7 +5,6 @@
 import { lazy } from 'react';
 
 const Home = lazy(() => import('../pages/Home'));
-const Articles = lazy(() => import('../pages/Articles'));
 
 export default [
   {
@@ -15,22 +14,16 @@ export default [
     component: Home,
     routes: [
       {
-        path: '/coding',
-        title: 'Coding',
-        sidebar: 'nav.coding',
-        component: Articles
+        path: '/sitemap',
+        title: '归档',
+        name: 'sitemap',
+        component: 'Sitemap'
       },
       {
-        path: '/traveling',
-        title: 'Traveling',
-        sidebar: 'nav.traveling',
-        component: Articles
-      },
-      {
-        path: '/trying',
-        title: 'Trying',
-        sidebar: 'nav.trying',
-        component: Articles
+        path: '/about',
+        title: '关于我',
+        name: 'about',
+        component: 'About'
       }
     ]
   }

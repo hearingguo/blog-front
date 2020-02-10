@@ -25,8 +25,8 @@ class Routes extends Component<StateProps, DispatchProps> {
         <ConnectedRouter history={history}>
           <Suspense fallback={<Loading />}>
             <Switch>
-              <Route key="home" path="/" component={Home} exact={true} />
-              <Route key="features" path="/articles/:name" component={BasicLayout} exact={true} />
+              <Route key="home" path="/blog" component={Home} exact={true} />
+              <Route key="features" path="/blog/:name/:id?" component={BasicLayout} exact={true} />
               <Route key="404" component={E404} />
             </Switch>
           </Suspense>
