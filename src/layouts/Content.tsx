@@ -4,8 +4,7 @@ import { Route, Switch } from 'react-router-dom';
 import routeConfig from '../routes/config';
 import styled from 'styled-components';
 import styles from '@/config/style';
-
-const Articles = lazy(() => import('../pages/Articles'));
+import Articles from '@/pages/Articles';
 
 const StyleMain = styled.div`
   position: relative;
@@ -26,16 +25,10 @@ class Content extends Component<StateProps> {
     return (
       // blog-main
       <StyleMain>
+        {/* <Articles /> */}
         <Switch>
           {classifies.list.map((item, index) => {
-            return (
-              <Route
-                key={index}
-                exact={true}
-                path={`/blog/${item.name}`}
-                component={lazy(() => import('../pages/Articles'))}
-              />
-            );
+            return <Route key={index} exact={true} path={`/articles/${item.name}`} component={Articles} />;
           })}
         </Switch>
       </StyleMain>

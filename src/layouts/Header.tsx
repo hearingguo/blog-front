@@ -5,6 +5,8 @@ import styles from '../config/style';
 import Search from '../components/common/Search';
 import logo from '../assets/images/logo.png';
 import { withRouter, RouteComponentProps } from 'react-router';
+import { link } from 'fs';
+import { Link } from 'react-router-dom';
 
 const StyleHeader = styled.div`
   overflow: hidden;
@@ -64,7 +66,7 @@ class Header extends Component<StateProps & RouteComponentProps> {
                 <StyleNav
                   key={index}
                   onClick={() => {
-                    this.props.history.push(`/blog/${item.name}`);
+                    this.props.history.push(`/articles/${item.name}`);
                   }}
                 >
                   {item.title}
@@ -80,6 +82,6 @@ class Header extends Component<StateProps & RouteComponentProps> {
   }
 }
 
-export default connect<StateProps, null, {}, RootState>((state: RootState) => ({ classifies: state.classifies }))(
-  withRouter(Header)
+export default withRouter(
+  connect<StateProps, null, {}, RootState>((state: RootState) => ({ classifies: state.classifies }))(Header)
 );

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Dispatch, bindActionCreators } from 'redux';
 import * as actionCreators from '@/actions/articles';
 import { withRouter, RouteComponentProps } from 'react-router';
+import { isEqual } from 'lodash';
 
 interface StateProps {
   classifies: IListItem<IClassifyItem>;
@@ -33,8 +34,9 @@ class Coding extends Component<StateProps & DispatchProps & RouteComponentProps,
   }
 
   private init = () => {
-    const { history, fetchArticles, classifies } = this.props;
-    const pathName = history.location.pathname.split('/').pop() || '';
+    const { location, fetchArticles, classifies, match } = this.props;
+    const pathName = location.pathname.split('/').pop() || '';
+    console.log(classifies);
     const articleClassifyId = getArticleClassifyId(classifies.list, pathName);
     this.setState(
       {
@@ -48,19 +50,29 @@ class Coding extends Component<StateProps & DispatchProps & RouteComponentProps,
     );
   };
 
-  public componentWillReceiveProps = (nextProps: RouteComponentProps) => {
-    console.log(nextProps);
-    //  this.init();
-  };
+  public componentWillReceiveProps(nexProps: RouteComponentProps & StateProps) {
+    console.log(nexProps);
+    if (isEqual(nexProps.classifies, this.props.classifies)) {
+      this.init();
+    }
+  }
 
-  public componentDidMount = async () => {
-    this.init();
-  };
+  public componentDidUpdate(prevProps: RouteComponentProps & StateProps) {
+    const locationChanged = this.props.location !== prevProps.location;
+    if (isEqual(prevProps.classifies, this.props.classifies)) {
+      this.init();
+    }
+    console.log(locationChanged);
+    //  this.init();
+  }
 
   public render() {
-    const { articles, history } = this.props;
-    console.log(history);
-    return <List articles={articles} path={history.location.pathname} />;
+    const { articles, location } = this.props;
+    return (
+      <>
+        <List articles={articles} path={location.pathname} />
+      </>
+    );
   }
 }
 
